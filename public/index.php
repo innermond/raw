@@ -1,5 +1,6 @@
 <?php require dirname(__DIR__) . '/vendor/autoload.php';
 
+use Dotenv\Dotenv;
 use Relay\Middleware\ResponseSender;
 use Relay\Middleware\ExceptionHandler;
 use Psr\Http\Message\ResponseInterface;
@@ -148,6 +149,9 @@ $stack = [
 ];
 $b = new Builder();
 $relay = $b->newInstance($stack);
+$cfg = $di->make('App\Config\General');
+$dotenv = new Dotenv\Dotenv($cfg->ROOT);
+$dotenv->load();
 try {
 	$relay(ServerRequestFactory::fromGlobals(), new Response);
 } catch (Throwable $e) {
