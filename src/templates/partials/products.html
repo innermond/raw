@@ -1,0 +1,23 @@
+{% for product in products %}
+<div class="col-sm-6 col-md-4">
+  <div class="product">
+    <img src="/images/{{ product.img }}" alt="product">
+     <div class="product-text">
+       <h4>{{ product.name }}</h4>
+        <div class="description">
+           <div class="description-inner">
+             <ul>
+             {% for line in product.description %}
+             <li>{{ line|e }}</li>
+             {% endfor %}
+             </ul>
+           </div>
+        </div>
+        {% for line in product.price %}
+        <div class="price-variant clearfix"><span>{{ line.0 }}</span> <strong>{{ line.1 }}</strong></div>
+        {% endfor %}
+     </div>
+  </div>
+</div>
+{% endfor %}
+
