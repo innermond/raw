@@ -149,8 +149,7 @@ $stack = [
 ];
 $b = new Builder();
 $relay = $b->newInstance($stack);
-$cfg = $di->make('App\Config\General');
-$dotenv = new Dotenv\Dotenv($cfg->ROOT);
+$dotenv = new Dotenv('../');
 $dotenv->load();
 try {
 	$relay(ServerRequestFactory::fromGlobals(), new Response);
