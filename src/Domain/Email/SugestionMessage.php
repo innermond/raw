@@ -1,4 +1,4 @@
-<?php namespace App\Domain\Email;
+<?php namespace App\Domain\Email;
 
 class SugestionMessage {
 

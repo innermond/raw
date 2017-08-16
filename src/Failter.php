@@ -90,7 +90,7 @@ class Failter {
 					$msg = isset($this->errmsg[$key]) ?
 					array_shift($this->errmsg[$key]) : ['invalid'];
         else // consume stored error message in sync with foreach of $newcarry
-          array_shift($this->errmsg[$key]);
+          if (isset($this->errmsg[$key])) array_shift($this->errmsg[$key]);
 				if ( ! is_null($msg)) $this->error[$key][] = $msg;
 			}
 			return array_merge_recursive($carry, $newcarry);
